@@ -28,20 +28,21 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
+
 ## Write a short comment describing this function
 ## The 2nd function computes the inverse of the special object "matrix" created by above by function makeCacheMatrix above. 
 ## If the inverse has already been calculated, the function should returns the inverse of the cache.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-  invr <- x$getInverse()
-  if (!is.null(invr)) {
-    message("calling cached data")
-    return(invr)
-  }
-  mat <- x$get()
-  invr <- solve(mat, ...)
-  x$setInverse(invr)
-  invr
+        inv <- x$getInverse()
+        if (!is.null(inv)) {
+                message("getting cached data")
+                return(inv)
+        }
+        mat <- x$get()
+        inv <- solve(mat, ...)
+        x$setInverse(inv)
+        inv
 }
 
